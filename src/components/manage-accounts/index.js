@@ -28,6 +28,7 @@ export default function ManageAccounts() {
 		show: false,
 		account: null,
 	});
+	const [showLoader, setShowLoader] = useState(false);
 	const { data: session } = useSession();
 	const pathname = usePathname();
 	const router = useRouter();
@@ -55,6 +56,7 @@ export default function ManageAccounts() {
 	}
 
 	async function handleSave() {
+		setShowLoader(true);
 		const res = await fetch('/api/account/create-account', {
 			method: 'POST',
 			headers: {
@@ -75,6 +77,7 @@ export default function ManageAccounts() {
 			setShowAccountForm(false);
 		}
 		getAllAccounts();
+		setShowLoader(false);
 
 	}
 
@@ -217,6 +220,7 @@ export default function ManageAccounts() {
 					formData={formData}
 					setFormData={setFormData}
 					setShowAccountForm={setShowAccountForm}
+					showLoader={showLoader}
 				/>)
 			}
 		</div>

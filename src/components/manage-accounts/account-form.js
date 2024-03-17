@@ -5,7 +5,8 @@ export default function AccountForm({
 	setShowAccountForm,
 	formData,
 	setFormData,
-	handleSave
+	handleSave,
+	showLoader
 }) {
 	return (
 		
@@ -46,7 +47,13 @@ export default function AccountForm({
 					<button
 						onClick={handleSave}
 						className="border p-2 bg-[#e5b109] outline-none rounded-lg text-black text-lg font-bold"
-					>Save</button>
+					>
+						{
+							showLoader ? <div className="loader mx-auto"></div> : "Create"							
+						}
+						
+				    </button>
+
 					<button
 						onClick={() => setShowAccountForm(false)}
 						className="border p-2 bg-[#e5b109] outline-none rounded-lg text-black text-lg font-bold"
@@ -59,3 +66,5 @@ export default function AccountForm({
 		
 	);
 }
+
+/* HTML:  */
